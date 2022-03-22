@@ -1,0 +1,64 @@
+<?php
+
+	$pol = mysqli_connect("localhost", "root", "", "test1");
+	if($pol)echo "polaczono ez";
+	mysqli_query($pol, "SET NAMES 'utf8'");
+	if(isset($_POST['p']) 
+		
+		&& !empty($_POST['n']) 
+		&& !empty($_POST['i']) 
+		&& !empty($_POST['du']) 
+		&& !empty($_POST['u']) 
+		&& !empty($_POST['k']) 
+		&& !empty($_POST['m']) 
+		&& !empty($_POST['w']) 
+		&& !empty($_POST['t'])
+		&& !empty($_POST['e'])
+		&& !empty($_POST['pl'])){
+			
+			$n=$_POST['n'];
+			$i=$_POST['i'];
+			$du=$_POST['du'];
+			$u=$_POST['u'];
+			$k=$_POST['k'];
+			$m=$_POST['m'];
+			$w=$_POST['w'];
+			$t=$_POST['t'];
+			$e=$_POST['e'];
+			$pl=$_POST['pl'];
+			
+			$zap="INSERT INTO 'tKlienci' VALUES(
+			NULL
+			,'$n'
+			,'$i'
+			,'$du'
+			,'$u'
+			,'$k'
+			,'$m'
+			,'$w'
+			,'$t'
+			,'$e'
+			,'$pl'
+			)";
+	$wynik=mysqli_query($pol, $zap);
+	if($wynik) echo "Dodany do bazy";
+	else "Nie dodanno do bazy";
+		}
+		else echo " Nie podano wszystkich danych";
+			
+
+	
+	
+	$wynik=mysqli_query($pol, "SELECT Imie, Nazwisko FROM tKlienci ORDER BY Nazwisko, Imie");
+	echo "<ol>";
+	while($w=mysqli_fetch_array($wynik)){
+		
+		echo "<li>".$w['Nazwisko']." ".$w['Imie']."</li>";
+	} 
+	echo "</ol>";
+	
+	
+	
+	
+	mysqli_close($pol);
+	?>
