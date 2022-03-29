@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='pl'>
+<head>
+<meta charset='utf-8'>
+<title></title> 
+<style></style>
+</head>
+<body>
+<form method="POST">
+		<input type="submit" value="dodaj" name="do">
+		<input type="submit" value="usun" name="us">
+	</form>
+	
+<?php
+
+	$p = mysqli_connect("localhost", "root", "", "test1");
+	if($p)echo "polaczono ez";
+	mysqli_query($p, "SET NAMES 'utf8'");
+		
+		if(isset($_POST['do'])){
+		$wynika=mysqli_query($p,"UPDATE tKlienci SET plec='K' WHERE Imie LIKE '%a'");
+		$wynikb=mysqli_query($p,"UPDATE tKlienci SET plec='M' WHERE Imie NOT LIKE '%a'");		
+		if($wynika&&$wynikb) echo "Zaktualizowano"; else echo "bład aktualizacji";
+		}
+		
+		if(isset($_POST['us'])){
+		$wynika=mysqli_query($p,"UPDATE tKlienci SET plec='' WHERE Imie LIKE '%a'");
+		$wynikb=mysqli_query($p,"UPDATE tKlienci SET plec='' WHERE Imie NOT LIKE '%a'");
+		if($wynika&&$wynikb) echo "Usunieto"; else echo "bład aktualizacji";
+		}
+		
+		$tabela=mysqli_query($p,"SELECT Imie, Nazwisko, Plec FROM tKlienci ORDER BY Nazwisko");
+		echo"<table border='1'>";
+		echo"<tr><td>Nazwisko<td>Imie<td>Płec</tr>";
+		
+		while($w=mysqli_fetch_array($tabela)){
+			
+			echo"<tr><td>".$w['Nazwisko']."<td>".$w['Imie']."<td> ".$w['Plec']."</tr>";
+		}
+		echo "</table>";
+		
+	mysqli_close($p);
+	?>
+</body>
+</html>
