@@ -1,0 +1,48 @@
+html{
+	font-family:Verdana;
+}
+
+#banner, footer{
+	background-color:rgb(205,92,92);
+	color:white;
+	text-align:center;
+	padding:5px;
+	clear:both;
+}
+
+#left, #right{
+	background-color:rgb(250,235,215);
+	width:25%;
+	height:500px;
+	float:left;
+}
+
+#middle{
+	background-color:rgb(250,235,215);
+	width:50%;
+	height:500px;
+	float:left;
+}
+
+#data{
+	background-color:rgb(210,180,140);
+	color:white;
+}
+
+h2{
+	text-align:center;
+}
+
+h2::first-letter{
+	font-size:150%
+}
+
+img{
+	height:100px;
+	padding:7px;
+}
+
+h2:hover {
+  background:rgb(210, 180,
+140);
+}

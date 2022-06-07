@@ -1,0 +1,1 @@
+SELECT nazwaPliku, podpis from zdjecia order by podpis

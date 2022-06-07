@@ -1,0 +1,4 @@
+SELECT nazwaPliku, cel FROM zdjecia, wycieczki WHERE cena>1000 
+
+kw 4
+ALTER TABLE wycieczki ADD dataPrzyjazdu date after dataWyjazdu
